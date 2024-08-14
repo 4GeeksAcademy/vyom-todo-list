@@ -17,10 +17,11 @@ const Home = () => {
     }
   };
 
-  console.log(items);
+  // console.log(items);
 
   const handleDelete = (index) => {
-    const newItems = items.filter((_, i) => i !== index);
+    const newItems = items.filter((hol, i) => i !== index);
+    // const newItems = items.filter((i) => i !== items[index]);
     setItems(newItems);
   };
 
@@ -29,20 +30,27 @@ const Home = () => {
       className="text-white d-flex justify-content-center align-items-center flex-column"
       style={{
         height: "100vh",
+        // background: "#0f1f44",
       }}
     >
-      <h1 className="text-secondary m-0 text-center">todos</h1>
+      <h1
+        className="text-danger m-0 text-center"
+        style={{ zIndex: 10, fontSize: "100px" }}
+      >
+        List
+      </h1>
       <div
         className="w-75 mx-auto rounded p-5 bg-white position-relative"
         style={{
-          boxShadow: "rgb(38, 57, 77) 0px 20px 30px -10px",
+          boxShadow:
+            "rgb(38, 57, 77) 0px 20px 100px -10px, rgba(30, 50, 72, 0.4) 0px 5px, rgba(30, 50, 72, 0.3) 0px 10px, rgba(30, 50, 72, 0.2) 0px 15px, rgba(30, 50, 72, 0.1) 0px 20px, rgba(30, 50, 72, 0.05) 0px 25px",
           maxWidth: "1200px",
         }}
       >
         <form onSubmit={handleSubmit}>
           <input
             className=" w-100 fs-3 border-bottom"
-            placeholder="What happen bro...?"
+            placeholder="que hay de nuevo viejo?🐰(escribe aqui)"
             type="text"
             style={{ border: "none", outline: "none" }}
             id="newTarea"
@@ -52,7 +60,7 @@ const Home = () => {
         <ul className="text-secondary mt-3 fs-3 d-flex gap-2 flex-column w-100 list-group">
           {items.map((item, index) => (
             <li
-              className="li-container p-2 d-flex justify-content-between border-bottom rounded"
+              className="li-container p-2 d-flex justify-content-between  rounded"
               key={index}
               id={index}
             >
@@ -66,8 +74,8 @@ const Home = () => {
             </li>
           ))}
         </ul>
-        <span className="text-secondary position-absolute bottom-0 start-0 p-1">
-          {items.length} items
+        <span className="text-secondary px-2 position-absolute bottom-0 start-0 p-1">
+          <span className="text-danger fw-bold">{items.length}</span> items
         </span>
       </div>
     </main>
